@@ -1,32 +1,26 @@
-import React from "react";
-import logo from "./images/logo.svg";
-import dashboard from "./images/dashboard.png";
-import icon from "./images/favicon.png";
+import dashboard from "./assets/images/dashboard.png";
+
+import { Dashboard, Main, TextWrapper } from "./styles";
+import { Form, Header, Footer } from "./components";
 
 function App() {
 	return (
-		<main>
-			<header>
-				<img src={logo} alt="logo" />
-			</header>
-			<article>
-				<h1>We are launching soon!</h1>
+		<Main>
+			<Header />
+
+			<TextWrapper>
+				<h1>
+					We are launching <strong>soon!</strong>
+				</h1>
 				<h2>Subscribe and get notified</h2>
-			</article>
-			<form action="">
-				<input type="text" />
-				<button>Notify Me</button>
-			</form>
-			<img src={dashboard} alt="dashboard" />
-			<footer>
-				<div>
-					<img src={icon} alt="facebook-icon" />
-					<img src={icon} alt="twitter-icon" />
-					<img src={icon} alt="instagram-icon" />
-				</div>
-				<p>&copy; Copyright Ping. All rights reserved.</p>
-			</footer>
-		</main>
+			</TextWrapper>
+
+			<Form />
+
+			<Dashboard src={dashboard} alt="dashboard" />
+
+			<Footer />
+		</Main>
 	);
 }
 
