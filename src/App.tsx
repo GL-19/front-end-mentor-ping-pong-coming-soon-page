@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./images/logo.svg";
+import dashboard from "./images/dashboard.png";
+import icon from "./images/favicon.png";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<main>
+			<header>
+				<img src={logo} alt="logo" />
+			</header>
+			<article>
+				<h1>We are launching soon!</h1>
+				<h2>Subscribe and get notified</h2>
+			</article>
+			<form action="">
+				<input type="text" />
+				<button>Notify Me</button>
+			</form>
+			<img src={dashboard} alt="dashboard" />
+			<footer>
+				<div>
+					<img src={icon} alt="facebook-icon" />
+					<img src={icon} alt="twitter-icon" />
+					<img src={icon} alt="instagram-icon" />
+				</div>
+				<p>&copy; Copyright Ping. All rights reserved.</p>
+			</footer>
+		</main>
+	);
 }
 
 export default App;
