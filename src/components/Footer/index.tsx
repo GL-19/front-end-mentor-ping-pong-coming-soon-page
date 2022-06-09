@@ -6,9 +6,9 @@ export function Footer() {
 	return (
 		<FooterContainer>
 			<IconsContainer>
-				<Icon icon={faFacebookF} />
-				<Icon icon={faTwitter} />
-				<Icon icon={faInstagram} />
+				<Icon icon={faFacebookF} data-testid="facebook-icon" />
+				<Icon icon={faTwitter} data-testid="twitter-icon" />
+				<Icon icon={faInstagram} data-testid="instagram-icon" />
 			</IconsContainer>
 			<p>&copy; Copyright Ping. All rights reserved.</p>
 		</FooterContainer>

@@ -16,5 +16,8 @@ describe("Footer", () => {
 		);
 
 		expect(screen.getByText(/Copyright Ping. All rights reserved./i)).toBeInTheDocument();
+		expect(screen.getByTestId("facebook-icon")).toBeInTheDocument();
+		expect(screen.getByTestId("twitter-icon")).toBeInTheDocument();
+		expect(screen.getByTestId("instagram-icon")).toBeInTheDocument();
 	});
 });
