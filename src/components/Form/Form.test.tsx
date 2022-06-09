@@ -7,10 +7,12 @@ import { ThemeProvider } from "styled-components";
 import { themes } from "../../styles/themes";
 
 describe("Footer", () => {
+	const onSubmit = jest.fn();
+
 	it("should render correctly with default props", () => {
 		const screen = render(
 			<ThemeProvider theme={themes}>
-				<Form />
+				<Form onSubmit={onSubmit} />
 			</ThemeProvider>
 		);
 
@@ -25,10 +27,24 @@ describe("Footer", () => {
 		expect(errorMsg).not.toBeInTheDocument();
 	});
 
+	it("should change input value correctly", () => {
+		const screen = render(
+			<ThemeProvider theme={themes}>
+				<Form onSubmit={onSubmit} />
+			</ThemeProvider>
+		);
+
+		const input = screen.getByPlaceholderText("Your email address") as HTMLInputElement;
+
+		fireEvent.change(input, { target: { value: "test" } });
+
+		expect(input.value).toBe("test");
+	});
+
 	it("should render error message if submitted with empty input", () => {
 		const screen = render(
 			<ThemeProvider theme={themes}>
-				<Form />
+				<Form onSubmit={onSubmit} />
 			</ThemeProvider>
 		);
 
@@ -44,26 +60,13 @@ describe("Footer", () => {
 		const messageAfterSubmit = screen.getByText("Please provide a valid email address");
 
 		expect(messageAfterSubmit).toBeInTheDocument();
-	});
-
-	it("should change input value correctly", () => {
-		const screen = render(
-			<ThemeProvider theme={themes}>
-				<Form />
-			</ThemeProvider>
-		);
-
-		const input = screen.getByPlaceholderText("Your email address") as HTMLInputElement;
-
-		fireEvent.change(input, { target: { value: "test" } });
-
-		expect(input.value).toBe("test");
+		expect(onSubmit).not.toHaveBeenCalled();
 	});
 
 	it("should render error message if submitted without valid email", () => {
 		const screen = render(
 			<ThemeProvider theme={themes}>
-				<Form />
+				<Form onSubmit={onSubmit} />
 			</ThemeProvider>
 		);
 
@@ -77,5 +80,22 @@ describe("Footer", () => {
 		const message = screen.getByText("Please provide a valid email address");
 
 		expect(message).toBeInTheDocument();
+		expect(onSubmit).not.toHaveBeenCalled();
+	});
+
+	it("should call onSubmit correctly", () => {
+		const screen = render(
+			<ThemeProvider theme={themes}>
+				<Form onSubmit={onSubmit} />
+			</ThemeProvider>
+		);
+
+		const input = screen.getByPlaceholderText("Your email address") as HTMLInputElement;
+		const button = screen.getByText("Notify Me");
+
+		fireEvent.change(input, { target: { value: "test@email.com" } });
+		fireEvent.click(button);
+
+		expect(onSubmit).toHaveBeenCalled();
 	});
 });

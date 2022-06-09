@@ -15,7 +15,7 @@ function App() {
 				<h2>Subscribe and get notified</h2>
 			</TextWrapper>
 
-			<Form />
+			<Form onSubmit={(email: string) => alert(`${email} cadastrado com sucesso`)} />
 
 			<Dashboard src={dashboard} alt="dashboard" />
 

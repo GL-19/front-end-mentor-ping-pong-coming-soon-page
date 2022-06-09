@@ -3,18 +3,22 @@ import { FormContainer, Input, Button, ErrorMsg } from "./styles";
 
 const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
-export function Form() {
+interface FormProps {
+	onSubmit: (email: string) => void;
+}
+
+export function Form({ onSubmit }: FormProps) {
 	const [email, setEmail] = useState("");
 	const [invalidEmail, setInvalidEmail] = useState(false);
 
 	function handleSubmit(event: FormEvent<InnerHTML>): void {
 		event.preventDefault();
+		setInvalidEmail(false);
 
 		if (!regex.test(email)) {
 			setInvalidEmail(true);
 		} else {
-			setInvalidEmail(false);
-			alert("Enviado com sucesso");
+			onSubmit(email);
 		}
 	}
 
