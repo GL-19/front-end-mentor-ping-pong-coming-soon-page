@@ -1,13 +1,14 @@
-import icon from "../../assets/images/favicon.png";
+import { faTwitter, faInstagram, faFacebookF } from "@fortawesome/free-brands-svg-icons";
+
 import { FooterContainer, Icon, IconsContainer } from "./styles";
 
 export function Footer() {
 	return (
 		<FooterContainer>
 			<IconsContainer>
-				<Icon src={icon} alt="facebook-icon" />
-				<Icon src={icon} alt="twitter-icon" />
-				<Icon src={icon} alt="instagram-icon" />
+				<Icon icon={faFacebookF} />
+				<Icon icon={faTwitter} />
+				<Icon icon={faInstagram} />
 			</IconsContainer>
 			<p>&copy; Copyright Ping. All rights reserved.</p>
 		</FooterContainer>
